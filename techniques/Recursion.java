@@ -32,6 +32,14 @@ public class Main
         }
         
     }
+
+	public static int reverseNumber(int number) {
+        if (number < 10) {
+            return number;
+        } else {
+            return Integer.parseInt(Integer.toString(number % 10) + reverseNumber(number / 10));
+        }
+    }
 	public static void main(String[] args) {
 	    
 	    countGridPaths(41,4);
