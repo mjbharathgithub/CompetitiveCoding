@@ -87,6 +87,62 @@ public class Main
         System.out.println("Move disk " + n + " from rod " + from_rod + " to rod " + to_rod);
         towerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
     }
+
+
+     public static boolean solveNQueens(int[][] board, int col) {
+        if(col >= board.length){
+            return true; // All queens are placed successfully
+        }
+
+        for (int row = 0; row < board.length; row++){
+            if (isSafe(board,row,col)){
+                board[row][col]=1; // Place the queen
+
+                if (solveNQueens(board,col+1)){
+                    return true; // If placing the queen leads to a solution, return true
+                }
+
+                // Backtrack: If placing the queen doesn't lead to a solution, remove it
+                board[row][col]=0; 
+            }
+        }
+
+        return false; // No safe position found for this column
+    }
+
+    public static boolean isSafe(int[][] board, int row, int col) {
+        // Check this row on the left side
+        for(int i=0;i<col;i++){
+            if(board[row][i]==1){
+                return false;
+            }
+        }
+
+        // Check upper diagonal on the left side
+        for(int i=row,j=col;i>=0&&j>=0;i--,j--){
+            if(board[i][j]==1){
+                return false;
+            }
+        }
+
+        // Check lower diagonal on the left side
+        for(int i=row,j=col;i<board.length &&j >= 0;i++,j--){
+            if (board[i][j] == 1) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void printSolution(int[][] board) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                System.out.print(" " + board[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 	public static void main(String[] args) {
 	    
 	    countGridPaths(41,4);
