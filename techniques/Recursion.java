@@ -1,6 +1,41 @@
 
 public class Main
 {
+	 static int sumOfArrayElementsTailRecursion(int n){
+        
+    }
+    
+	public static void main(String[] args) {
+	    System.out.println(len(""));
+	}
+	
+	
+	static long sumOfDigits(long n,long sum){
+        if(n>0) return sumOfDigits(n/10,(sum+n%10));
+        
+        return sum;
+        
+        
+    }
+    
+    static long sum(long n){
+        if(n<10) return n;
+        
+        return (n%10+ sum(n/10));
+    }
+    
+    static void reverse(String str,int len){
+        if(len>0){
+       
+        System.out.print(str.charAt(len-1)); 
+        reverse(str,len-1);
+        }
+    }
+
+
+
+
+	
         static int count=0;
     static int nonNegSum(int n){
         if(n>0){
