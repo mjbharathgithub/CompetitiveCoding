@@ -1,6 +1,36 @@
 
 public class Main
 {
+
+	static int returnNthFib(int n){
+        if(n>0&&n<3)
+        {
+            return n-1;
+        }
+        
+        return returnNthFib(n-1)+returnNthFib(n-2);
+        
+    }
+    
+    
+    
+    static int binarySearch(int t,int arr[],int left,int right){
+        
+        if(left<=right){
+            int mid=(left+right)/2;
+            
+            if(arr[mid]==t) return mid;
+            
+            if(arr[mid]<t) return binarySearch(t,arr,mid+1,right);
+            
+            if(arr[mid]>t) return binarySearch(t,arr,left,mid-1);
+        }
+        
+        return -1;
+        
+    }
+
+	
 	 static int sumOfArrayElementsTailRecursion(int n){
         
     }
