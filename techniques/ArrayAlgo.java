@@ -30,5 +30,32 @@ static void swap(int arr[],int n1,int n2){
         }
     }
 
-  
+    public static void rotate(int[] nums, int k) {
+        if (nums == null || nums.length <= 1 || k == 0) {
+            return;
+        }
+
+        int n = nums.length;
+        k = k % n; // Handle cases where k > n
+
+        if (k < 0) { // Handle negative k
+            k = n + k;
+        }
+
+        int count = 0;
+        for (int start = 0; count < n; start++) {
+            int current = start;
+            int prev = nums[start];
+            do {
+                int next = (current + k) % n;
+                int temp = nums[next];
+                nums[next] = prev;
+                prev = temp;
+                current = next;
+                count++;
+            } while (start != current);
+        }
+    }
+
+    
 }
